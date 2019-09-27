@@ -24,7 +24,7 @@ class Assignment2
 
         char** myGrid;
 
-        //char** myGrid2;
+        char** myGrid2;
 
 
 
