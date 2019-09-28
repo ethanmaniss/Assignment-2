@@ -19,6 +19,7 @@ Assignment2::Assignment2() // no-arg constructor
         }
     }
 }
+
 Assignment2::~Assignment2() // destructor
 {
     cout << "Object deleted." << endl;
@@ -39,9 +40,7 @@ Assignment2::Assignment2(int row, int column)
     }
 }
 
-
-
-void Assignment2::Grid()
+void Assignment2::printGrid()
 {
     myGrid = new char*[row];
     for(int i = 0; i < row; i++)
@@ -54,3 +53,21 @@ void Assignment2::Grid()
         cout << "\n" << endl;
     }
 }
+/*
+void Assignment2::copyGrid(char** grid1, char** grid2)
+{
+    row = 5; // initialize empty 2d array
+    column = 4;
+    neighbors = 0;
+    genNum = 0;
+    myGrid = new char*[row];
+    for(int i = 0; i < row; i++)
+    {
+        myGrid[i] = new char[column];
+        for(int j = 0; j < column; j++)
+        {
+            myGrid2[i][j] = myGrid[i][j];
+        }
+    }
+}
+*/

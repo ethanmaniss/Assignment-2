@@ -13,7 +13,7 @@ class Assignment2
         Assignment2(int row, int column);
 
 
-        void Grid();
+        void printGrid();
 
     private: // instance variables
 
