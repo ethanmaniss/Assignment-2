@@ -116,7 +116,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if top cell has 4 alive neighors
+                        // if top cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
                         }
@@ -188,7 +188,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if top cell has 4 alive neighors
+                        // if top cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
@@ -216,31 +216,31 @@ void ClassicMode::Rules()
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') ||
                                 (myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
@@ -258,7 +258,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if left cell has 4 alive neighors
+                        // if left cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
                         }
@@ -330,7 +330,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if left cell has 4 alive neighors
+                        // if left cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
@@ -358,31 +358,31 @@ void ClassicMode::Rules()
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') ||
                                 (myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
@@ -400,7 +400,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if right cell has 4 alive neighors
+                        // if right cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
                         }
@@ -472,7 +472,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if right cell has 4 alive neighors
+                        // if right cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
@@ -500,31 +500,31 @@ void ClassicMode::Rules()
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') ||
                                 (myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
@@ -542,7 +542,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if bottom cell has 4 alive neighors
+                        // if bottom cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
                         }
@@ -614,7 +614,7 @@ void ClassicMode::Rules()
                     {
                         if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
                             myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
-                        // if bottom cell has 4 alive neighors
+                        // if bottom cell has 4 alive neighbors
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
@@ -642,31 +642,31 @@ void ClassicMode::Rules()
                         {
                             myGrid2[i][j] = '-'; // cell dies due to overcrowding
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') &&
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') ||
                                 (myGrid[i][j-1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') ||
                                 (myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
                             myGrid2[i][j] = 'X'; // cell is either born or stabilizes
                         }
-                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') &&
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') ||
                                 (myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
                         // cell has 2 or 3 neighbors
                         {
