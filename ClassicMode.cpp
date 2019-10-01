@@ -254,15 +254,429 @@ void ClassicMode::Rules()
                 }
                 else if(j == 0) // if cell is part of the left side
                 {
-
+                    if(myGrid[i][j] == '-') // if left cell is dead
+                    {
+                        if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                            myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
+                        // if left cell has 4 alive neighors
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else
+                        {
+                            myGrid2[i][j] = '-'; // cell will die under any other condition
+                        }
+                    }
+                    else if(myGrid[i][j] == 'X') // if the left cell is alive
+                    {
+                        if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                            myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
+                        // if left cell has 4 alive neighors
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') &&
+                                (myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') &&
+                                (myGrid[i][j-1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') &&
+                                (myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') &&
+                                (myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') &&
+                                (myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else
+                        {
+                            myGrid2[i][j] = '-'; // cell will die in any other condition
+                        }
+                    }
                 }
                 else if(j == column-1) // if cell is part of the right side
                 {
-
+                    if(myGrid[i][j] == '-') // if right cell is dead
+                    {
+                        if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                            myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
+                        // if right cell has 4 alive neighors
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else
+                        {
+                            myGrid2[i][j] = '-'; // cell will die under any other condition
+                        }
+                    }
+                    else if(myGrid[i][j] == 'X') // if the right cell is alive
+                    {
+                        if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                            myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
+                        // if right cell has 4 alive neighors
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') &&
+                                (myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') &&
+                                (myGrid[i][j-1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') &&
+                                (myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') &&
+                                (myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') &&
+                                (myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else
+                        {
+                            myGrid2[i][j] = '-'; // cell will die in any other condition
+                        }
+                    }
                 }
                 else if(i == row-1) // if cell is part of the bottom side
                 {
-
+                    if(myGrid[i][j] == '-') // if bottom cell is dead
+                    {
+                        if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                            myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
+                        // if bottom cell has 4 alive neighors
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell stays dead (overcrowding)
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X' &&
+                                myGrid[i][j+1] == 'X') || (myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // only 3 neighbors are alive
+                        {
+                            myGrid2[i][j] = 'X'; // new cell is born
+                        }
+                        else
+                        {
+                            myGrid2[i][j] = '-'; // cell will die under any other condition
+                        }
+                    }
+                    else if(myGrid[i][j] == 'X') // if the bottom cell is alive
+                    {
+                        if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                            myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X')
+                        // if bottom cell has 4 alive neighors
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if(myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X' &&
+                                myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X')
+                        // 4 or more neighbors are alive
+                        {
+                            myGrid2[i][j] = '-'; // cell dies due to overcrowding
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j-1] == 'X') &&
+                                (myGrid[i][j-1] == 'X' && myGrid[i+1][j] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i][j-1] == 'X' && myGrid[i+1][j+1] == 'X') &&
+                                (myGrid[i][j-1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i+1][j] == 'X') &&
+                                (myGrid[i+1][j-1] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j-1] == 'X' && myGrid[i][j+1] == 'X') &&
+                                (myGrid[i+1][j] == 'X' && myGrid[i+1][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else if((myGrid[i+1][j] == 'X' && myGrid[i][j+1] == 'X') &&
+                                (myGrid[i+1][j+1] == 'X' && myGrid[i][j+1] == 'X'))
+                        // cell has 2 or 3 neighbors
+                        {
+                            myGrid2[i][j] = 'X'; // cell is either born or stabilizes
+                        }
+                        else
+                        {
+                            myGrid2[i][j] = '-'; // cell will die in any other condition
+                        }
+                    }
                 }
             }
             else // cell is determined to be a middle cell with 8 neighbors
