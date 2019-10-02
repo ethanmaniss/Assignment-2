@@ -10,7 +10,7 @@
 EXECUTABLE := Assignment2
 
 # the source files to be built
-SOURCES := Assignment2.cpp
+SOURCES := *.cpp
 
 # stuff you don't need to worry about
 INCLUDES := -I ../include
