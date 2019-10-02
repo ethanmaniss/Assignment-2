@@ -32,5 +32,3 @@ class Assignment2
 };
 
 #endif
-
-// multidimensional arrays: https://www.geeksforgeeks.org/multidimensional-arrays-c-cpp/
