@@ -53,7 +53,7 @@ void Assignment2::printGrid()
         cout << "\n" << endl;
     }
 }
-/*
+
 void Assignment2::copyGrid(char** grid1, char** grid2)
 {
     row = 5; // initialize empty 2d array
@@ -70,4 +70,3 @@ void Assignment2::copyGrid(char** grid1, char** grid2)
         }
     }
 }
-*/

@@ -5,25 +5,30 @@ using namespace std;
 
 int main()
 {
-    int x = 5;
-    int y = 4;
+    int userChoice;
 
-    char grid[x][y] = {{'X','-','-','X'}, {'-','-','X','-'}, {'X','X','X','X'}, {'-','-','X','-'}, {'-','-','X','-'}};
-    for(int i = 0; i < x; i++) // traverse through rows
+    while(true)
     {
-        for(int j = 0; j < y; j++) // traverse through columns
+        cout << "Select 1) for random configuration" << endl;
+        cout << "Or select 2) to choose configuration" << endl;
+        try
         {
-            //cout << "char at x[" << i << "] [" << j << "] : " << endl;
-
-            cout << grid[i][j] << " ";
-
+            cin >> userChoice;
         }
-        cout << "\n" << endl; // new line for next row iterated through
+        catch(int userChoice)
+        {
+            cout << "Integer exception." << endl;
+            cout << "Please select either 1) or 2)." << endl;
+        }
+        if(userChoice == 1 || userChoice == 2)
+        {
+            break;
+        }
+        else
+        {
+            cout << "Please select either 1) or 2)." << endl;
+        }
     }
-    //Assignment2 a2;
-    //a2.Grid();
-    //delete a2;
-
 
 
 
